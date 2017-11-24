@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorController : MonoBehaviour {
+public class LewerUse : MonoBehaviour {
 
-    public GameObject Door;
+    public GameObject Safe;
     public GameObject HelpText;
-    private bool doorOpening;
+    public GameObject Lever;
+    private bool safeIsShowing;
     private bool playerInArea;
 
     private void Start()
@@ -15,29 +16,31 @@ public class DoorController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (playerInArea)
         {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {
-                doorOpening = true;
+                safeIsShowing = true;
             }
         }
 
-        if (doorOpening == true)
+        if (safeIsShowing == true)
         {
-            Door.transform.Translate(Vector3.back * Time.deltaTime * 2);
+            Safe.transform.Translate(Vector3.left * Time.deltaTime * 1);
+            Lever.transform.Rotate(Vector3.back * Time.deltaTime * 10);
         }
-        if(Door.transform.position.z < -3.55f)
+        if (Safe.transform.position.x < 8f)
         {
-            doorOpening = false;
+            safeIsShowing = false;
         }
 
-	}
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             HelpText.SetActive(true);
             playerInArea = true;
