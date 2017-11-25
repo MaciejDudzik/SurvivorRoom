@@ -7,6 +7,8 @@ public class LewerUse : MonoBehaviour {
     public GameObject Safe;
     public GameObject HelpText;
     public GameObject Lever;
+    public GameObject WhiteCubePlaceHolder;
+    public GameObject BlueCubePlaceHolder;
     private bool safeIsShowing;
     private bool playerInArea;
 
@@ -22,7 +24,9 @@ public class LewerUse : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {
-                safeIsShowing = true;
+                if(WhiteCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true &&
+                    BlueCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true)
+                    safeIsShowing = true;
             }
         }
 
