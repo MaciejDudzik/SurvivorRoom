@@ -7,10 +7,13 @@ public class LewerUse : MonoBehaviour {
     public GameObject Safe;
     public GameObject HelpText;
     public GameObject Lever;
+    public GameObject Carpet;
     public GameObject WhiteCubePlaceHolder;
     public GameObject BlueCubePlaceHolder;
     private bool safeIsShowing;
+    private bool carpetIsMoving;
     private bool playerInArea;
+    private bool isActiveted;
 
     private void Start()
     {
@@ -20,13 +23,20 @@ public class LewerUse : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (playerInArea)
+        if (playerInArea && !isActiveted)
         {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {
                 if(WhiteCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true &&
                     BlueCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true)
+                {
                     safeIsShowing = true;
+                }
+                else
+                {
+                    carpetIsMoving = true;
+                }
+                    
             }
         }
 
@@ -38,6 +48,16 @@ public class LewerUse : MonoBehaviour {
         if (Safe.transform.position.x < 8f)
         {
             safeIsShowing = false;
+            isActiveted = true;
+        }
+
+        if (carpetIsMoving)
+        {
+            Carpet.transform.Translate(Vector3.back * Time.deltaTime * 10);
+        }
+        if(Carpet.transform.position.z < -2.4f) 
+        {
+            carpetIsMoving = false;
         }
 
     }
@@ -46,7 +66,8 @@ public class LewerUse : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            HelpText.SetActive(true);
+            if(!isActiveted)
+                HelpText.SetActive(true);
             playerInArea = true;
         }
     }
