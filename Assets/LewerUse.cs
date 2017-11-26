@@ -18,6 +18,7 @@ public class LewerUse : MonoBehaviour {
     private void Start()
     {
         HelpText.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class LewerUse : MonoBehaviour {
                     BlueCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true)
                 {
                     safeIsShowing = true;
+                    Safe.GetComponent<SafeController>().isActivated = true;
                 }
                 else
                 {
@@ -43,6 +45,7 @@ public class LewerUse : MonoBehaviour {
         if (safeIsShowing == true)
         {
             Safe.transform.Translate(Vector3.left * Time.deltaTime * 1);
+            Safe.GetComponent<BoxCollider>().transform.Translate(Vector3.left * Time.deltaTime * 1);
             Lever.transform.Rotate(Vector3.back * Time.deltaTime * 10);
         }
         if (Safe.transform.position.x < 8f)

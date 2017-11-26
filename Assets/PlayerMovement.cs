@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         mouseY = Mathf.Clamp(mouseY, minY, maxY);
 
         transform.Translate(x, 0, z);
+        transform.position = new Vector3(transform.position.x, 3, transform.position.z);
         transform.rotation = Quaternion.identity * Quaternion.AngleAxis(mouseX, Vector3.up) * Quaternion.AngleAxis(mouseY, Vector3.right);
 
         if (Input.GetKeyDown("escape"))
