@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class SafeController : MonoBehaviour {
 
@@ -78,14 +79,14 @@ public class SafeController : MonoBehaviour {
     private void showCanvas()
     {
         safeCanvas.enabled = true;
-        player.GetComponent<PlayerMovement>().enabled=false;
+        player.GetComponent<FirstPersonController>().enabled=false;
         HelpText.SetActive(false);
     }
 
     private void hideCanvas()
     {
         safeCanvas.enabled = false;
-        player.GetComponent<PlayerMovement>().enabled = true;
+        player.GetComponent<FirstPersonController>().enabled = true;
         if(isActivated)
             HelpText.SetActive(true);
     }
