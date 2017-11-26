@@ -6,8 +6,10 @@ public class DoorController : MonoBehaviour {
 
     public GameObject Door;
     public GameObject HelpText;
+    public Material greenMaterial;
     private bool doorOpening;
     private bool playerInArea;
+    private bool isUnlocked;
 
     private void Start()
     {
@@ -18,7 +20,7 @@ public class DoorController : MonoBehaviour {
     void Update () {
         if (playerInArea)
         {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0))
+            if (isUnlocked && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0)))
             {
                 doorOpening = true;
             }
@@ -41,6 +43,12 @@ public class DoorController : MonoBehaviour {
         {
             HelpText.SetActive(true);
             playerInArea = true;
+        }
+
+        if (other.tag == "ID")
+        {
+            GetComponent<Renderer>().material = greenMaterial;
+            isUnlocked = true;
         }
     }
 

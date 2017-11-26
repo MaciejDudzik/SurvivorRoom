@@ -10,6 +10,7 @@ public class SafeController : MonoBehaviour {
     public GameObject HelpText;
     public GameObject player;
     public GameObject door;
+    public GameObject id;
 
     public GameObject focus;
     public Text[] textNumbers = new Text[5];
@@ -31,7 +32,12 @@ public class SafeController : MonoBehaviour {
         if (openDoor)
         {
             door.transform.Rotate(Vector3.left * Time.deltaTime * 20);
-            if (door.transform.rotation.x < -0.9999) openDoor = false;
+            //id.GetComponent<BoxCollider>().transform.Translate(Vector3.forward * Time.deltaTime/10);
+            if (door.transform.rotation.x < -0.9999)
+            {
+                openDoor = false;
+                id.GetComponent<PickUp>().isPickable = true;
+            }
         }
         if (isActivated && playerInArea)
         {
@@ -49,6 +55,7 @@ public class SafeController : MonoBehaviour {
                     isActivated = false;
                     openDoor = true;
                     hideCanvas();
+                    id.GetComponent<Rigidbody>().isKinematic = false;
                 }
             }
 

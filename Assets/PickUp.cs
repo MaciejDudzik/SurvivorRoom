@@ -7,10 +7,11 @@ public class PickUp : MonoBehaviour {
     private bool playerInArea;
     private bool isPickedUp;
     public Transform Hand;
+    public bool isPickable;
 
     // Update is called once per frame
     void Update () {
-        if (playerInArea)
+        if (playerInArea && isPickable)
         {
             if (isPickedUp)
                 placeDown();
