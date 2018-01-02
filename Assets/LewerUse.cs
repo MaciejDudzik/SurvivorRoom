@@ -8,8 +8,9 @@ public class LewerUse : MonoBehaviour {
     public GameObject HelpText;
     public GameObject Lever;
     public GameObject Carpet;
-    public GameObject WhiteCubePlaceHolder;
+    public GameObject GreenCubePlaceHolder;
     public GameObject BlueCubePlaceHolder;
+    public GameObject WhiteCubePlaceHolder;
     private bool safeIsShowing;
     private bool carpetIsMoving;
     private bool playerInArea;
@@ -29,7 +30,8 @@ public class LewerUse : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {
                 if(WhiteCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true &&
-                    BlueCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true)
+                    BlueCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true &&
+                    GreenCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true)
                 {
                     safeIsShowing = true;
                     Safe.GetComponent<SafeController>().isActivated = true;

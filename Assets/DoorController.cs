@@ -6,10 +6,12 @@ public class DoorController : MonoBehaviour {
 
     public GameObject Door;
     public GameObject HelpText;
+    public GameObject KnifesGroup;
     public Material greenMaterial;
     private bool doorOpening;
     private bool playerInArea;
     private bool isUnlocked;
+    private bool knifesFlying;
 
     private void Start()
     {
@@ -23,6 +25,19 @@ public class DoorController : MonoBehaviour {
             if (isUnlocked && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0)))
             {
                 doorOpening = true;
+            }
+            if(!isUnlocked && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0)))
+            {
+                knifesFlying = true;
+            }
+        }
+
+        if (knifesFlying)
+        {
+            KnifesGroup.transform.Translate(Vector3.back * Time.deltaTime * 5f);
+            foreach(Transform knife in KnifesGroup.transform)
+            {
+                knife.Rotate(Vector3.left * Time.deltaTime * Random.Range(800, 1300));
             }
         }
 

@@ -25,8 +25,10 @@ public class PickUp : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             GetComponent<Rigidbody>().useGravity = false;
-            this.transform.position = Hand.position;
-            this.transform.parent = GameObject.Find("Player").transform;
+            GetComponent<Rigidbody>().isKinematic = false;
+            transform.position = Hand.position;
+            //transform.localPosition = new Vector3(2, 2, -0.5f);
+            transform.parent = GameObject.Find("Hand").transform;
             isPickedUp = true;
         }
     }
@@ -36,7 +38,7 @@ public class PickUp : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             GetComponent<Rigidbody>().useGravity = true;
-            this.transform.parent = GameObject.Find("Pickable").transform; ;
+            transform.parent = GameObject.Find("Pickable").transform; ;
             isPickedUp = false;
         }
     }
