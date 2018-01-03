@@ -5,6 +5,7 @@ using UnityEngine;
 public class LewerUse : MonoBehaviour {
 
     public GameObject Safe;
+    public GameObject PickUpText;
     public GameObject HelpText;
     public GameObject Lever;
     public GameObject Carpet;
@@ -71,8 +72,11 @@ public class LewerUse : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            if(!isActiveted)
+            if (!isActiveted)
+            {
                 HelpText.SetActive(true);
+                PickUpText.SetActive(false);
+            }
             playerInArea = true;
         }
     }

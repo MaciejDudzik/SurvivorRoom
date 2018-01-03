@@ -6,8 +6,15 @@ public class PickUp : MonoBehaviour {
 
     private bool playerInArea;
     private bool isPickedUp;
+    public GameObject PickUpText;
+    public GameObject UseText;
     public Transform Hand;
     public bool isPickable;
+
+    private void Start()
+    {
+        PickUpText.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update () {
@@ -22,14 +29,15 @@ public class PickUp : MonoBehaviour {
 
     private void pickUp()
     {
-        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))
+        if (Hand.childCount == 0 &&
+            Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             GetComponent<Rigidbody>().useGravity = false;
-            GetComponent<Rigidbody>().isKinematic = false;
+            GetComponent<Rigidbody>().isKinematic = true;
             transform.position = Hand.position;
-            //transform.localPosition = new Vector3(2, 2, -0.5f);
             transform.parent = GameObject.Find("Hand").transform;
             isPickedUp = true;
+            PickUpText.SetActive(false);
         }
     }
 
@@ -38,6 +46,7 @@ public class PickUp : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Rigidbody>().isKinematic = false;
             transform.parent = GameObject.Find("Pickable").transform; ;
             isPickedUp = false;
         }
@@ -47,7 +56,11 @@ public class PickUp : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            //HelpText.SetActive(true);
+            if (isPickable)
+            {
+                PickUpText.SetActive(true);
+                UseText.SetActive(false);
+            }
             playerInArea = true;
         }
     }
@@ -57,7 +70,7 @@ public class PickUp : MonoBehaviour {
         if (other.tag == "Player")
         {
             playerInArea = false;
-            //HelpText.SetActive(false);
+            PickUpText.SetActive(false);
         }
     }
 }

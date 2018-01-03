@@ -6,6 +6,7 @@ public class DoorController : MonoBehaviour {
 
     public GameObject Door;
     public GameObject HelpText;
+    public GameObject PickUpText;
     public GameObject KnifesGroup;
     public Material greenMaterial;
     private bool doorOpening;
@@ -57,6 +58,7 @@ public class DoorController : MonoBehaviour {
         if(other.tag == "Player")
         {
             HelpText.SetActive(true);
+            PickUpText.SetActive(false);
             playerInArea = true;
         }
 

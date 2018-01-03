@@ -7,6 +7,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class SafeController : MonoBehaviour {
 
     public Canvas safeCanvas;
+    public GameObject PickUpText;
     public GameObject HelpText;
     public GameObject player;
     public GameObject door;
@@ -32,7 +33,6 @@ public class SafeController : MonoBehaviour {
         if (openDoor)
         {
             door.transform.Rotate(Vector3.left * Time.deltaTime * 20);
-            //id.GetComponent<BoxCollider>().transform.Translate(Vector3.forward * Time.deltaTime/10);
             if (door.transform.rotation.x < -0.9999)
             {
                 openDoor = false;
@@ -88,6 +88,7 @@ public class SafeController : MonoBehaviour {
         safeCanvas.enabled = true;
         player.GetComponent<FirstPersonController>().enabled=false;
         HelpText.SetActive(false);
+        PickUpText.SetActive(false);
     }
 
     private void hideCanvas()
@@ -103,7 +104,10 @@ public class SafeController : MonoBehaviour {
         if (other.tag == "Player")
         {
             if (isActivated)
+            {
                 HelpText.SetActive(true);
+                PickUpText.SetActive(false);
+            }
             playerInArea = true;
         }
     }
