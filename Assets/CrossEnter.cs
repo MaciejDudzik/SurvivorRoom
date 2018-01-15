@@ -19,6 +19,7 @@ public class CrossEnter : MonoBehaviour {
         if (WielkieKowadlo.transform.position.y < 0f)
         {
             wielkieKowadloIsDropping = false;
+            WielkieKowadlo.GetComponent<Demage>().StopDoingDemage();
         }
 
     }
