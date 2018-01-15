@@ -2929,6 +2929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndGameText: {fileID: 1933169966}
+  RestartText: {fileID: 96990588}
   Player: {fileID: 733891295}
   pickText: {fileID: 321396634}
 --- !u!4 &733891300 stripped
