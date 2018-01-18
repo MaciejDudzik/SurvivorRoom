@@ -28,7 +28,7 @@ public class LewerUse : MonoBehaviour {
     {
         if (playerInArea && !isActiveted)
         {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0))
+            if (Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {
                 if(WhiteCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true &&
                     BlueCubePlaceHolder.GetComponent<detectObject>().cubeInArea == true &&

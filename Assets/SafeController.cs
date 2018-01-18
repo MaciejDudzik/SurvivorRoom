@@ -41,7 +41,7 @@ public class SafeController : MonoBehaviour {
         }
         if (isActivated && playerInArea)
         {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0))
+            if (Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {
                 if (safeCanvas.enabled)
                     hideCanvas();
@@ -60,22 +60,22 @@ public class SafeController : MonoBehaviour {
             }
 
 
-                if (Input.GetKeyDown(KeyCode.RightArrow) && focusNumber<2)
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) && focusNumber<2)
             {
                 focusNumber++;
                 focus.GetComponent<RectTransform>().localPosition = new Vector3(300 * focusNumber, 0);
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && focusNumber > -2)
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) && focusNumber > -2)
             {
                 focusNumber--;
                 focus.GetComponent<RectTransform>().localPosition = new Vector3(300 * focusNumber, 0);
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) && numbers[focusNumber + 2] < 9)
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) && numbers[focusNumber + 2] < 9)
             {
                 numbers[focusNumber + 2]++;
                 textNumbers[focusNumber + 2].text = numbers[focusNumber + 2].ToString();
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) && numbers[focusNumber + 2] > 0)
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) && numbers[focusNumber + 2] > 0)
             {
                 numbers[focusNumber + 2]--;
                 textNumbers[focusNumber + 2].text = numbers[focusNumber + 2].ToString();
@@ -86,7 +86,7 @@ public class SafeController : MonoBehaviour {
     private void showCanvas()
     {
         safeCanvas.enabled = true;
-        player.GetComponent<FirstPersonController>().canOnlyLookAround = true;
+        player.GetComponent<OVRPlayerController>().HaltUpdateMovement = true;
         HelpText.SetActive(false);
         PickUpText.SetActive(false);
     }
@@ -94,7 +94,7 @@ public class SafeController : MonoBehaviour {
     private void hideCanvas()
     {
         safeCanvas.enabled = false;
-        player.GetComponent<FirstPersonController>().canOnlyLookAround = false;
+        player.GetComponent<OVRPlayerController>().HaltUpdateMovement = false;
         if (isActivated)
             HelpText.SetActive(true);
     }

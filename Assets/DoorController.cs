@@ -23,11 +23,11 @@ public class DoorController : MonoBehaviour {
     void Update () {
         if (playerInArea)
         {
-            if (isUnlocked && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0)))
+            if (isUnlocked && (Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.JoystickButton0)))
             {
                 doorOpening = true;
             }
-            if(!isUnlocked && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0)))
+            if(!isUnlocked && (Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.JoystickButton0)))
             {
                 knifesFlying = true;
             }

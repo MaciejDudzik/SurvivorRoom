@@ -22,7 +22,7 @@ public class GrenadeController : MonoBehaviour {
 	void Update () {
         if (playerInArea)
         {
-            if (!exploded && Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton0))
+            if (!exploded && Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {
                 triggered = true;
                 Explosion.GetComponent<AudioSource>().Play();
