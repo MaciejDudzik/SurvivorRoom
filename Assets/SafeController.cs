@@ -86,7 +86,7 @@ public class SafeController : MonoBehaviour {
     private void showCanvas()
     {
         safeCanvas.enabled = true;
-        player.GetComponent<FirstPersonController>().enabled=false;
+        player.GetComponent<FirstPersonController>().canOnlyLookAround = true;
         HelpText.SetActive(false);
         PickUpText.SetActive(false);
     }
@@ -94,8 +94,8 @@ public class SafeController : MonoBehaviour {
     private void hideCanvas()
     {
         safeCanvas.enabled = false;
-        player.GetComponent<FirstPersonController>().enabled = true;
-        if(isActivated)
+        player.GetComponent<FirstPersonController>().canOnlyLookAround = false;
+        if (isActivated)
             HelpText.SetActive(true);
     }
 

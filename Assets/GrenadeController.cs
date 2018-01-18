@@ -8,6 +8,7 @@ public class GrenadeController : MonoBehaviour {
     public GameObject PickUpText;
     public GameObject Explosion;
     public GameObject Player;
+    public GameObject ExplosionArea;
     private bool playerInArea;
     private bool triggered;
     private bool exploded;
@@ -35,10 +36,8 @@ public class GrenadeController : MonoBehaviour {
             {
                 Explosion.GetComponent<ParticleSystem>().Play();
                 exploded = true;
-                if (playerInArea)
-                {   
-                    Player.GetComponent<Health>().Kill();
-                }
+                ExplosionArea.GetComponent<explosionScript>().Kill();
+                
             }
         }
 	}

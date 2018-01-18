@@ -41,7 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-        public bool alive;
+        public bool alive, canOnlyLookAround;
 
         // Use this for initialization
         private void Start()
@@ -57,13 +57,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             alive = true;
+            canOnlyLookAround = false;
         }
 
         public void Kill()
         {
             alive = false;
         }
-
 
         // Update is called once per frame
         private void Update()
@@ -104,7 +104,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
-            if (alive)
+            if (alive && !canOnlyLookAround)
             {
                 float speed;
                 GetInput(out speed);
