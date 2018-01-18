@@ -36,7 +36,7 @@ public class Health : MonoBehaviour {
             alive = false;
             EndGameText.SetActive(true);
             RestartText.SetActive(true);
-            Player.GetComponent<FirstPersonController>().Kill();          
+            Player.GetComponent<OVRPlayerController>().HaltUpdateMovement = true;
             pickText.SetActive(false);
         }
     }
