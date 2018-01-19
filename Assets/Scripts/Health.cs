@@ -28,7 +28,7 @@ public class Health : MonoBehaviour {
     {
         if (!alive)
         {
-            if(Input.GetKeyDown(KeyCode.R))
+            if(Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.JoystickButton1))
             {
                 SceneManager.LoadScene("Scene1");
             }

@@ -48,7 +48,7 @@ public class SafeController : MonoBehaviour {
                 else
                     showCanvas();
             }
-            if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))
+            if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton2))
             {
                 if(numbers[0]==2 && numbers[1] == 3 && numbers[2] == 1 && numbers[3] == 0 && numbers[4] == 6)
                 {
