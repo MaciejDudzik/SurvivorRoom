@@ -5,8 +5,8 @@ using UnityEngine;
 public class DoorController : MonoBehaviour {
 
     public GameObject Door;
-    public GameObject HelpText;
-    public GameObject PickUpText;
+    public Canvas HelpText;
+    public Canvas PickUpText;
     public GameObject KnifesGroup;
     public Material greenMaterial;
     private bool doorOpening;
@@ -16,7 +16,6 @@ public class DoorController : MonoBehaviour {
 
     private void Start()
     {
-        HelpText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -57,8 +56,8 @@ public class DoorController : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            HelpText.SetActive(true);
-            PickUpText.SetActive(false);
+            HelpText.enabled = true;
+            PickUpText.enabled = false;
             playerInArea = true;
         }
 
@@ -74,7 +73,7 @@ public class DoorController : MonoBehaviour {
         if (other.tag == "Player")
         {
             playerInArea = false;
-            HelpText.SetActive(false);
+            HelpText.enabled = false;
         }
     }
 }

@@ -6,14 +6,13 @@ public class PickUp : MonoBehaviour {
 
     private bool playerInArea;
     private bool isPickedUp;
-    public GameObject PickUpText;
-    public GameObject UseText;
+    public Canvas PickUpText;
+    public Canvas UseText;
     public Transform Hand;
     public bool isPickable;
 
     private void Start()
     {
-        PickUpText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,7 +36,7 @@ public class PickUp : MonoBehaviour {
             transform.position = Hand.position;
             transform.parent = GameObject.Find("Hand").transform;
             isPickedUp = true;
-            PickUpText.SetActive(false);
+            PickUpText.enabled = false;
         }
     }
 
@@ -58,8 +57,8 @@ public class PickUp : MonoBehaviour {
         {
             if (isPickable)
             {
-                PickUpText.SetActive(true);
-                UseText.SetActive(false);
+                PickUpText.enabled = true;
+                UseText.enabled = false;
             }
             playerInArea = true;
         }
@@ -70,7 +69,7 @@ public class PickUp : MonoBehaviour {
         if (other.tag == "Player")
         {
             playerInArea = false;
-            PickUpText.SetActive(false);
+            PickUpText.enabled = false;
         }
     }
 }

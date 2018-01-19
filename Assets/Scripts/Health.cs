@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour {
 
     private bool alive;
-    public GameObject EndGameText;
-    public GameObject RestartText;
+    public Canvas EndGameText;
+    public Canvas HelpText;
     public GameObject Player;
-    public GameObject pickText;
+    public Canvas pickText;
 
     // Use this for initialization
     void Start()
@@ -34,10 +34,10 @@ public class Health : MonoBehaviour {
             }
 
             alive = false;
-            EndGameText.SetActive(true);
-            RestartText.SetActive(true);
+            EndGameText.enabled = true;
             Player.GetComponent<OVRPlayerController>().HaltUpdateMovement = true;
-            pickText.SetActive(false);
+            pickText.enabled = false;
+            HelpText.enabled = false;
         }
     }
 }

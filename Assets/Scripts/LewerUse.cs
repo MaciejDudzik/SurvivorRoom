@@ -5,8 +5,8 @@ using UnityEngine;
 public class LewerUse : MonoBehaviour {
 
     public GameObject Safe;
-    public GameObject PickUpText;
-    public GameObject HelpText;
+    public Canvas PickUpText;
+    public Canvas HelpText;
     public GameObject Lever;
     public GameObject Carpet;
     public GameObject GreenCubePlaceHolder;
@@ -18,9 +18,7 @@ public class LewerUse : MonoBehaviour {
     private bool isActiveted;
 
     private void Start()
-    {
-        HelpText.SetActive(false);
-        
+    {      
     }
 
     // Update is called once per frame
@@ -74,8 +72,9 @@ public class LewerUse : MonoBehaviour {
         {
             if (!isActiveted)
             {
-                HelpText.SetActive(true);
-                PickUpText.SetActive(false);
+                //HelpText.SetActive(true);
+                HelpText.enabled = true;
+                PickUpText.enabled = false;
             }
             playerInArea = true;
         }
@@ -86,7 +85,7 @@ public class LewerUse : MonoBehaviour {
         if (other.tag == "Player")
         {
             playerInArea = false;
-            HelpText.SetActive(false);
+            HelpText.enabled = false;
         }
     }
 }

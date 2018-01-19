@@ -7,8 +7,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class SafeController : MonoBehaviour {
 
     public Canvas safeCanvas;
-    public GameObject PickUpText;
-    public GameObject HelpText;
+    public Canvas PickUpText;
+    public Canvas HelpText;
     public GameObject player;
     public GameObject door;
     public GameObject id;
@@ -24,7 +24,7 @@ public class SafeController : MonoBehaviour {
     private bool openDoor=false;
 
     void Start () {
-        HelpText.SetActive(false);
+        HelpText.enabled = false;
         for (int i = 0; i < numbers.Length; i++)
             numbers[i] = 0;
     }
@@ -87,8 +87,8 @@ public class SafeController : MonoBehaviour {
     {
         safeCanvas.enabled = true;
         player.GetComponent<OVRPlayerController>().HaltUpdateMovement = true;
-        HelpText.SetActive(false);
-        PickUpText.SetActive(false);
+        HelpText.enabled = false;
+        PickUpText.enabled = false;
     }
 
     private void hideCanvas()
@@ -96,7 +96,7 @@ public class SafeController : MonoBehaviour {
         safeCanvas.enabled = false;
         player.GetComponent<OVRPlayerController>().HaltUpdateMovement = false;
         if (isActivated)
-            HelpText.SetActive(true);
+            HelpText.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,8 +105,8 @@ public class SafeController : MonoBehaviour {
         {
             if (isActivated)
             {
-                HelpText.SetActive(true);
-                PickUpText.SetActive(false);
+                HelpText.enabled = true;
+                PickUpText.enabled = false;
             }
             playerInArea = true;
         }
@@ -116,7 +116,7 @@ public class SafeController : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            HelpText.SetActive(false);
+            HelpText.enabled = false;
             playerInArea = false;
         }
     }

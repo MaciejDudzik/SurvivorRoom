@@ -2,33 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class explosionScript : MonoBehaviour {
+public class Demage : MonoBehaviour {
 
     public GameObject Player;
-    bool executeKill, playerInArea, exploded;
+    private bool playerInArea;
+    private bool doeasDemage;
 
-	// Use this for initialization
-	void Start () {
-        executeKill = false;
+    // Use this for initialization
+    void Start () {
         playerInArea = false;
-        exploded = false;
-
+        doeasDemage = true;
     }
 
-    public void Kill()
+    public void StopDoingDemage()
     {
-        executeKill = true;
+        doeasDemage = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if(playerInArea && !exploded && executeKill)
+
+    // Update is called once per frame
+    void Update () {
+        if (doeasDemage && playerInArea)
         {
-            exploded = true;
             Player.GetComponent<Health>().Kill();
         }
-            
-    }
+	}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,6 +41,5 @@ public class explosionScript : MonoBehaviour {
         {
             playerInArea = false;
         }
-        
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GrenadeController : MonoBehaviour {
 
-    public GameObject HelpText;
-    public GameObject PickUpText;
+    public Canvas HelpText;
+    public Canvas PickUpText;
     public GameObject Explosion;
     public GameObject Player;
     public GameObject ExplosionArea;
@@ -15,18 +15,19 @@ public class GrenadeController : MonoBehaviour {
     private double timer;
 
 	void Start () {
-        HelpText.SetActive(false);
         timer = 0;
     }
 	
 	void Update () {
+
+
         if (playerInArea)
         {
             if (!exploded && Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.JoystickButton0))
             {
                 triggered = true;
                 Explosion.GetComponent<AudioSource>().Play();
-                HelpText.SetActive(false);
+                HelpText.enabled = false;
             }
         }
         if (!exploded && triggered)
@@ -36,8 +37,8 @@ public class GrenadeController : MonoBehaviour {
             {
                 Explosion.GetComponent<ParticleSystem>().Play();
                 exploded = true;
-                ExplosionArea.GetComponent<explosionScript>().Kill();
-                
+                if(ExplosionArea.GetComponent<explosionScript>().playerInArea == true)
+                    ExplosionArea.GetComponent<explosionScript>().Kill();
             }
         }
 	}
@@ -46,8 +47,11 @@ public class GrenadeController : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            HelpText.SetActive(true);
-            PickUpText.SetActive(false);
+            if (!exploded)
+            {
+                HelpText.enabled = true;
+                PickUpText.enabled = false;
+            }
             playerInArea = true;
         }
     }
@@ -57,7 +61,7 @@ public class GrenadeController : MonoBehaviour {
         if (other.tag == "Player")
         {
             playerInArea = false;
-            HelpText.SetActive(false);
+            HelpText.enabled = false;
         }
     }
 }
