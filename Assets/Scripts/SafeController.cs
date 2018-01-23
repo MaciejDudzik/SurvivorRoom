@@ -59,23 +59,22 @@ public class SafeController : MonoBehaviour {
                 }
             }
 
-
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) && focusNumber<2)
+            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.JoystickButton4)) && focusNumber<2)
             {
                 focusNumber++;
                 focus.GetComponent<RectTransform>().localPosition = new Vector3(300 * focusNumber, 0);
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) && focusNumber > -2)
+            if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.JoystickButton5)) && focusNumber > -2)
             {
                 focusNumber--;
                 focus.GetComponent<RectTransform>().localPosition = new Vector3(300 * focusNumber, 0);
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) && numbers[focusNumber + 2] < 9)
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.JoystickButton6) && numbers[focusNumber + 2] < 9)
             {
                 numbers[focusNumber + 2]++;
                 textNumbers[focusNumber + 2].text = numbers[focusNumber + 2].ToString();
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) && numbers[focusNumber + 2] > 0)
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.JoystickButton7) && numbers[focusNumber + 2] > 0)
             {
                 numbers[focusNumber + 2]--;
                 textNumbers[focusNumber + 2].text = numbers[focusNumber + 2].ToString();
