@@ -1310,7 +1310,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: Acceleration
-      value: 0.22
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
@@ -4285,7 +4285,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Wci\u015Bnij 'A' by u\u017Cy\u0107."
+  m_Text: "Wci\u015Bnij '1' by u\u017Cy\u0107."
 --- !u!222 &1029844184
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5554,7 +5554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Zgin\u0105\u0142e\u015B!\nWci\u015Bnij 'B' by zrestartowa\u0107."
+  m_Text: "Zgin\u0105\u0142e\u015B!\nWci\u015Bnij '2' by zrestartowa\u0107."
 --- !u!222 &1330102648
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8549,7 +8549,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Wci\u015Bnij 'X' by podnie\u015B\u0107."
+  m_Text: "Wci\u015Bnij '3' by podnie\u015B\u0107."
 --- !u!222 &1923225858
 CanvasRenderer:
   m_ObjectHideFlags: 0
